@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 
 class AppConstant {
   static String appMainName = "ecommerce";
-  static const appMainColor = Color(0xFF00DA80);
-  static const appSecondaryColor = Color(0xFF57FDB8);
+  static const appMainColor = Color.fromARGB(255, 155, 84, 255);
+  static const appSecondaryColor = Color.fromARGB(255, 126, 87, 253);
   static const appTextColor = Color(0xFF000000);
-  static const appStatusBarColor = Color(0xFF00DA80);
+  static const appStatusBarColor = Color.fromARGB(255, 84, 0, 218);
 }
