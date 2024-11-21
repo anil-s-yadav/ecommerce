@@ -1,15 +1,27 @@
 import 'package:ecommerce_app/controllers/google-sign-in-controller.dart';
+import 'package:ecommerce_app/screens/user-panel/main-screen.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../controllers/get-user-data-controller.dart';
+import '../../controllers/ign-in-controller.dart';
+import '../../utils/app-constant.dart';
 import 'forget-password.dart';
 import 'signup.dart';
 
+// ignore: must_be_immutable
 class SignInScreen extends StatelessWidget {
   SignInScreen({super.key});
 
   final GoogleSignInController _googleSignInController =
       Get.put(GoogleSignInController());
+  final SignInController signInController = Get.put(SignInController());
+  final GetUserDataController getUserDataController =
+      Get.put(GetUserDataController());
+
+  TextEditingController userEmail = TextEditingController();
+  TextEditingController userPassword = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -31,8 +43,9 @@ class SignInScreen extends StatelessWidget {
                 ),
                 const SizedBox(height: 20),
                 TextField(
+                  controller: userEmail,
                   decoration: InputDecoration(
-                    labelText: 'Username',
+                    labelText: 'Email',
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(12.0),
                     ),
@@ -40,6 +53,7 @@ class SignInScreen extends StatelessWidget {
                 ),
                 const SizedBox(height: 16),
                 TextField(
+                  controller: userPassword,
                   obscureText: true,
                   decoration: InputDecoration(
                     labelText: 'Password',
@@ -69,8 +83,51 @@ class SignInScreen extends StatelessWidget {
                 ),
                 const SizedBox(height: 16),
                 ElevatedButton(
-                  onPressed: () {
-                    // Handle sign-in logic
+                  onPressed: () async {
+                    String email = userEmail.text.trim();
+                    String password = userPassword.text.trim();
+
+                    if (email.isEmpty || password.isEmpty) {
+                      Get.snackbar(
+                        "Error",
+                        "Please enter all details",
+                        snackPosition: SnackPosition.BOTTOM,
+                        backgroundColor: AppConstant.appMainColor,
+                        colorText: AppConstant.appTextColor,
+                      );
+                    } else {
+                      UserCredential? userCredential =
+                          await signInController.signInMethod(email, password);
+
+                      if (userCredential != null) {
+                        if (userCredential.user!.emailVerified) {
+                          Get.offAll(() => MainScreen());
+                          Get.snackbar(
+                            "Success User Login",
+                            "Login Successfully!",
+                            snackPosition: SnackPosition.BOTTOM,
+                            backgroundColor: AppConstant.appMainColor,
+                            colorText: AppConstant.appTextColor,
+                          );
+                        } else {
+                          Get.snackbar(
+                            "Error",
+                            "Please verify your email before login",
+                            snackPosition: SnackPosition.BOTTOM,
+                            backgroundColor: AppConstant.appMainColor,
+                            colorText: AppConstant.appTextColor,
+                          );
+                        }
+                      } else {
+                        Get.snackbar(
+                          "Error",
+                          "Please try again",
+                          snackPosition: SnackPosition.BOTTOM,
+                          backgroundColor: AppConstant.appMainColor,
+                          colorText: AppConstant.appTextColor,
+                        );
+                      }
+                    }
                   },
                   style: ElevatedButton.styleFrom(
                     shape: RoundedRectangleBorder(
