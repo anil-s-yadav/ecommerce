@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:get/get.dart';
+import '../auth-ui/forget-password.dart';
 import '../auth-ui/signin.dart';
 
 class UserPage extends StatelessWidget {
@@ -49,28 +51,13 @@ class UserPage extends StatelessWidget {
           ListTile(
             title: const Text('Change Password'),
             onTap: () {
-              // Implement Change Password Logic here
-              showDialog(
-                context: context,
-                builder: (_) => const AlertDialog(
-                  title: Text('Change Password'),
-                  content: Text('Functionality to change password goes here.'),
-                ),
-              );
+              Get.to(() => ForgotPasswordPage());
             },
           ),
           ListTile(
-            title: const Text('Notifications'),
+            title: const Text('My Orders'),
             onTap: () {
-              // Implement Notification Settings Logic here
-              showDialog(
-                context: context,
-                builder: (_) => const AlertDialog(
-                  title: Text('Notification Settings'),
-                  content:
-                      Text('Toggle notifications or manage preferences here.'),
-                ),
-              );
+              // my orders page
             },
           ),
           ListTile(

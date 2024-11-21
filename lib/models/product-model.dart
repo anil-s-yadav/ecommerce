@@ -40,7 +40,7 @@ class ProductModel {
       categoryId: json['categoryId'],
       productName: json['productName'],
       categoryName: json['categoryName'],
-      price: json['salePrice'],
+      price: json['price'],
       productImages: json['productImages'],
       productDescription: json['productDescription'],
       createdAt: json['createdAt'],

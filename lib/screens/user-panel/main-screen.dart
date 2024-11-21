@@ -1,10 +1,10 @@
+import 'package:ecommerce_app/screens/user-panel/cart_page.dart';
 import 'package:flutter/material.dart';
 import '../../utils/app-constant.dart';
 import '../../widgets/banner-widget.dart';
 import '../../widgets/category-widget.dart';
 import '../../widgets/all-products-widget.dart';
 import 'favourite_page.dart';
-import 'cart_page.dart';
 import 'search-page.dart';
 import 'user_page.dart';
 
@@ -21,7 +21,7 @@ class _MainScreenState extends State<MainScreen> {
   final List<Widget> _pages = [
     const MainScreenContent(),
     const FavouritePage(),
-    const CartPage(),
+    const CartScreen(),
     const UserPage(),
   ];
 

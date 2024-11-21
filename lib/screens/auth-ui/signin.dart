@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../controllers/get-user-data-controller.dart';
-import '../../controllers/ign-in-controller.dart';
+import '../../controllers/sign-in-controller.dart';
 import '../../utils/app-constant.dart';
 import 'forget-password.dart';
 import 'signup.dart';
