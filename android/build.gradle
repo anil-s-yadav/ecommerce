@@ -1,18 +1,20 @@
 allprojects {
     repositories {
-        google()
-        mavenCentral()
+        google()  // Google's Maven repository (used for Android dependencies, such as Firebase)
+        mavenCentral()  // Maven Central repository
     }
 }
 
-rootProject.buildDir = "../build"
+rootProject.buildDir = "../build"  // Defines the root build directory for all subprojects
+
 subprojects {
+    // Set a custom build directory for each subproject
     project.buildDir = "${rootProject.buildDir}/${project.name}"
-}
-subprojects {
+
+    // Ensure the app module is evaluated before other modules
     project.evaluationDependsOn(":app")
 }
 
 tasks.register("clean", Delete) {
-    delete rootProject.buildDir
+    delete rootProject.buildDir  // Custom clean task to delete the build directory
 }

@@ -1,11 +1,15 @@
+import 'package:ecommerce_app/controllers/google-sign-in-controller.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+import 'package:get/get.dart';
 
 import 'forget-password.dart';
 import 'signup.dart';
 
 class SignInScreen extends StatelessWidget {
-  const SignInScreen({super.key});
+  SignInScreen({super.key});
+
+  final GoogleSignInController _googleSignInController =
+      Get.put(GoogleSignInController());
 
   @override
   Widget build(BuildContext context) {
@@ -81,7 +85,8 @@ class SignInScreen extends StatelessWidget {
                 const SizedBox(height: 16),
                 ElevatedButton.icon(
                   onPressed: () {
-                    // Handle Google sign-in logic
+                    //  Google sign-in logic
+                    _googleSignInController.signInWithGoogle();
                   },
                   style: ElevatedButton.styleFrom(
                     shape: RoundedRectangleBorder(
