@@ -30,7 +30,7 @@ class CartModel {
       'categoryId': categoryId,
       'productName': productName,
       'categoryName': categoryName,
-      'salePrice': price,
+      'price': price,
       'productImages': productImages,
       'productDescription': productDescription,
       'productQuantity': productQuantity,
