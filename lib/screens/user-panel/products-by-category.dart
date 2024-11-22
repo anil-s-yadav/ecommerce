@@ -74,6 +74,7 @@ class _AllSingleCategoryProductsScreenState extends State<ProductsByCategory> {
                   productName: productData['productName'],
                   categoryName: productData['categoryName'],
                   price: productData['price'],
+                  searchName: productData['searchName'],
                   productImages: productData['productImages'],
                   productDescription: productData['productDescription'],
                   createdAt: productData['createdAt'],

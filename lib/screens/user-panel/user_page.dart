@@ -1,3 +1,4 @@
+import 'package:ecommerce_app/screens/user-panel/my-orders.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
@@ -57,7 +58,8 @@ class UserPage extends StatelessWidget {
           ListTile(
             title: const Text('My Orders'),
             onTap: () {
-              // my orders page
+              Get.back();
+              Get.to(() => MyOrders());
             },
           ),
           ListTile(

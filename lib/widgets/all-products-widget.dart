@@ -56,6 +56,7 @@ class AllProductsWidget extends StatelessWidget {
                 productName: productData['productName'],
                 categoryName: productData['categoryName'],
                 price: productData['price'],
+                searchName: productData['searchName'],
                 productImages: productData['productImages'],
                 productDescription: productData['productDescription'],
                 createdAt: productData['createdAt'],

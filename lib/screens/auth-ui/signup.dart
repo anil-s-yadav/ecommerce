@@ -53,29 +53,22 @@ class _SignUpScreenState extends State<SignUpPage> {
               SizedBox(
                 height: Get.height / 20,
               ),
-              // Email Field
               buildTextField(
                   userEmail, "Email", Icons.email, TextInputType.emailAddress),
-              // Username Field
               buildTextField(
                   username, "UserName", Icons.person, TextInputType.name),
-              // Phone Field
               buildTextField(
                   userPhone, "Phone", Icons.phone, TextInputType.number),
-              // City Field
               buildTextField(userCity, "City", Icons.location_pin,
                   TextInputType.streetAddress),
-              // Password Field
               buildPasswordField(),
               SizedBox(
                 height: Get.height / 20,
               ),
-              // Sign Up Button
               signUpButton(),
               SizedBox(
                 height: Get.height / 20,
               ),
-              // Already have an account? Sign In link
               signInRedirect()
             ],
           ),
@@ -166,7 +159,6 @@ class _SignUpScreenState extends State<SignUpPage> {
             String city = userCity.text.trim();
             String password = userPassword.text.trim();
 
-            // Check if any field is empty
             if (name.isEmpty ||
                 email.isEmpty ||
                 phone.isEmpty ||
@@ -181,7 +173,6 @@ class _SignUpScreenState extends State<SignUpPage> {
               );
             } else {
               try {
-                // Call sign-up method from controller
                 UserCredential? userCredential =
                     await signUpController.signUpMethod(
                   name,
@@ -227,7 +218,6 @@ class _SignUpScreenState extends State<SignUpPage> {
     );
   }
 
-  // Sign In redirect text at the bottom
   Widget signInRedirect() {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,

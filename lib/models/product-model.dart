@@ -6,7 +6,8 @@ class ProductModel {
   final String productName;
   final String categoryName;
   final String price;
-  final List productImages;
+  final String searchName;
+  final List<dynamic> productImages;
   final String productDescription;
   final dynamic createdAt;
 
@@ -16,6 +17,7 @@ class ProductModel {
     required this.productName,
     required this.categoryName,
     required this.price,
+    required this.searchName,
     required this.productImages,
     required this.productDescription,
     required this.createdAt,
@@ -27,7 +29,8 @@ class ProductModel {
       'categoryId': categoryId,
       'productName': productName,
       'categoryName': categoryName,
-      'salePrice': price,
+      'price': price,
+      'searchName': searchName,
       'productImages': productImages,
       'productDescription': productDescription,
       'createdAt': createdAt,
@@ -36,13 +39,14 @@ class ProductModel {
 
   factory ProductModel.fromMap(Map<String, dynamic> json) {
     return ProductModel(
-      productId: json['productId'],
-      categoryId: json['categoryId'],
-      productName: json['productName'],
-      categoryName: json['categoryName'],
-      price: json['price'],
-      productImages: json['productImages'],
-      productDescription: json['productDescription'],
+      productId: json['productId'] ?? '',
+      categoryId: json['categoryId'] ?? '',
+      productName: json['productName'] ?? '',
+      categoryName: json['categoryName'] ?? '',
+      price: json['price']?.toString() ?? '0',
+      searchName: json['searchName'] ?? '',
+      productImages: (json['productImages'] as List<dynamic>?) ?? [],
+      productDescription: json['productDescription'] ?? '',
       createdAt: json['createdAt'],
     );
   }
